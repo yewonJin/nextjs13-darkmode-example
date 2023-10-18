@@ -1,20 +1,16 @@
 "use client";
 
-import Toggle from "@/components/Toggle";
-import Heading from "@/components/Heading";
-import useTheme, { CookieTheme } from "@/hooks/useTheme";
+import useTheme from "@/hooks/useTheme";
+import Toggle from "./Toggle";
+import Heading from "./Heading";
 
-export default function Main({ cookieTheme }: { cookieTheme: CookieTheme }) {
-  const { theme, handleThemeToggle } = useTheme(cookieTheme);
+export default function Main() {
+  const { theme, handleThemeToggle } = useTheme();
 
   return (
     <main>
-      <Heading cookieTheme={cookieTheme} theme={theme} />
-      <Toggle
-        cookieTheme={cookieTheme}
-        theme={theme}
-        handleThemeToggle={handleThemeToggle}
-      />
+      <Toggle theme={theme} handleThemeToggle={handleThemeToggle} />
+      <Heading theme={theme} />
     </main>
   );
 }

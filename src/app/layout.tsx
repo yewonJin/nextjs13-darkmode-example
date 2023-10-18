@@ -1,5 +1,3 @@
-import { cookies } from "next/headers";
-import { CookiesProvider } from "next-client-cookies";
 import "./globals.css";
 
 export default function RootLayout({
@@ -7,17 +5,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const setThemeMode = `
+  if (localStorage.theme === 'dark') {
+    document.documentElement.classList.add('ui-dark')
+  } else {
+    document.documentElement.classList.remove('ui-dark')
+  }
+`;
+
   return (
-    <html lang="en" className={getThemeInCookie() === "dark" ? "ui-dark" : ""}>
+    <html lang="kr" suppressHydrationWarning={true}>
       <body>
-        <CookiesProvider value={cookies().getAll()}>{children}</CookiesProvider>
+        <script dangerouslySetInnerHTML={{ __html: setThemeMode }} />
+        {children}
       </body>
     </html>
   );
 }
-
-export const getThemeInCookie = () => {
-  return cookies().get("theme")?.value as CookieTheme;
-};
-
-type CookieTheme = undefined | "light" | "dark";
