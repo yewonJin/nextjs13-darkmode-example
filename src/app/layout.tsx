@@ -7,15 +7,15 @@ export default function RootLayout({
 }) {
   const setThemeMode = `
   if (localStorage.theme === 'dark') {
-    document.documentElement.classList.add('ui-dark')
+    document.getElementsByTagName('body')[0].setAttribute("data-theme", "dark");    
   } else {
-    document.documentElement.classList.remove('ui-dark')
+    document.getElementsByTagName('body')[0].setAttribute("data-theme", "light");
   }
 `;
 
   return (
-    <html lang="kr" suppressHydrationWarning={true}>
-      <body>
+    <html lang="kr">
+      <body suppressHydrationWarning={true}>
         <script dangerouslySetInnerHTML={{ __html: setThemeMode }} />
         {children}
       </body>

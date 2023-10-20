@@ -1,16 +1,20 @@
 "use client";
 
-import useTheme from "@/hooks/useTheme";
 import Toggle from "./Toggle";
 import Heading from "./Heading";
+import useTheme from "@/hooks/useTheme";
+import Content from "./Content";
 
 export default function Main() {
-  const { theme, handleThemeToggle } = useTheme();
+  const { handleThemeToggle } = useTheme();
 
   return (
     <main>
-      <Toggle theme={theme} handleThemeToggle={handleThemeToggle} />
-      <Heading theme={theme} />
+      <div id="top">
+        <Toggle handleThemeToggle={handleThemeToggle} />
+        <Heading />
+      </div>
+      <Content />
     </main>
   );
 }

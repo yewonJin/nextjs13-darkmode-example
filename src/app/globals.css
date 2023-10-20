@@ -4,11 +4,6 @@
   margin: 0;
 }
 
-.ui-dark {
-  background-color: #111;
-  color: white;
-}
-
 html,
 body {
   max-width: 100vw;
@@ -16,20 +11,21 @@ body {
 }
 
 main {
+  width: 300px;
   margin: 120px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   gap: 8px;
 }
 
-main > h2 {
-  width: 180px;
-  text-align: center;
-  font-size: 32px;
+#top {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-.themeToggle {
+.toggle {
+  display: none;
   position: relative;
   width: 32px;
   height: 32px;
@@ -37,8 +33,27 @@ main > h2 {
   background: none;
 }
 
-.themeToggle:hover {
+.modeType {
+  display: none;
+  width: 180px;
+  font-size: 32px;
+}
+
+.toggle:hover {
   cursor: pointer;
+}
+
+body[data-theme="dark"] .dark {
+  display: block;
+}
+
+body[data-theme="light"] .light {
+  display: block;
+}
+
+body[data-theme="dark"] {
+  background-color: #111;
+  color: white;
 }
 
 a {
